@@ -5,6 +5,7 @@ import useInput from "./Hooks/useInput";
 import useTextarea from "./Hooks/useTextarea";
 import useLocalStorageState from "./Hooks/useLocalStorageState";
 import useSessionStorageState from "./Hooks/useSessionStorageState";
+import usePrevious from "./Hooks/usePrevious";
 
 function App() {
   const { value, toggle } = useToggle();
@@ -14,6 +15,7 @@ function App() {
   const { value5, onChange5, reset5 } = useTextarea();
   const { value6, setValueFunc6, setValue6, remove6 } = useLocalStorageState(10, 100);
   const { value7, setValueFunc7, setValue7, remove7 } = useSessionStorageState(10, 100);
+  const {oldValue ,previousValue, setValue8} = usePrevious()
    
 
   return (
@@ -46,6 +48,11 @@ function App() {
       <button onClick={setValueFunc7}>send</button>
       <button onClick={remove7}>remove</button>
       <p>{String(value7)}</p>
+      <hr />
+      <h3>8</h3>
+      <input onChange={(e) => setValue8(e.target.value)} type="text" />
+      <button onClick={previousValue}>set</button>
+      <p>{oldValue}</p>
     </div>
   );
 }
