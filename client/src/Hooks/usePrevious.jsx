@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function usePrevious() {
-  const [value8, setValue8] = useState("");
-  const [oldValue, setOldValue] = useState("old");
-  const [tempValue, setTempValue] = useState();
+  const [valuePrevies, setValuePrevies] = useState("");
+  const [valueCurrent, setValueCurrent] = useState("");
 
-  const previousValue = () => {
-    setTempValue(value8);
-    setValue8(tempValue)
+  const setValue8 = (val) => {
+    setValuePrevies(valueCurrent);
+    setValueCurrent(val);
   };
-
-  return { oldValue, previousValue, setValue8 };
+  return { valuePrevies, setValue8 };
 }
 
 export default usePrevious;
